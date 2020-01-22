@@ -8,19 +8,14 @@
 
 import React from 'react';
 import 'react-native-gesture-handler';
-import { SafeAreaView, ScrollView, Text, View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
+import Navigation from './src/components/navigation/Navigation';
 
 const App = () => {
 	return (
 		<>
 			<StatusBar barStyle="dark-content" />
-			<SafeAreaView>
-				<ScrollView contentInsetAdjustmentBehavior="automatic">
-					<View>
-						<Text> Hello World !</Text>
-					</View>
-				</ScrollView>
-			</SafeAreaView>
+			<Navigation />
 		</>
 	);
 };
