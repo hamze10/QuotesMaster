@@ -38,7 +38,7 @@ const style = StyleSheet.create({
 })
 
 const Home = () =>
-    <ImageBackground source={Images.background.home} style={style.container}>
+    <ImageBackground source={Images.background.home2} style={style.container}>
         <View style={style.content1}>
             <Text style={{fontSize : 30, fontWeight : "bold", textShadowColor : "white"}}> Welcome to </Text>
             <Text style={{fontSize : 40, fontWeight : "bold", textShadowColor : "white"}}> Quote Master ! </Text>
