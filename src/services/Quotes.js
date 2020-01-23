@@ -12,15 +12,14 @@ async function init(value) {
 async function getAll() {
     if (allQuotes.length === 0) {
         while (last >= 0) {
-            await init(val).then((res) => {
+            await init(val).then(async (res) => {
                 val += res.count;
                 last = res.lastItemIndex === null ? -1 : res.lastItemIndex;
-                res.results.forEach(el => {
-                    allQuotes.push(el)
+                await res.results.forEach(el => {
+                    allQuotes.push(new Quote(el._id, el.content, el.author))
                 })
             })
         }
-
     }
     return allQuotes;
 }

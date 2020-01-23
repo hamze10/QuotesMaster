@@ -11,21 +11,19 @@ class App extends Component {
 		super(props);
 		this.state = {
 			loading: true,
-			quotes: []
 		};
 	}
 
 	async _getAll() {
-		await Quotes.getAll();
+		let t = await Quotes.getAll();
+		console.log(`Done with ${t.length} result(s)`)
 	}
 
-	componentDidMount() {
-		this._getAll()
-		setTimeout(() => {
-			this.setState({
-				loading: false,
-			})
-		}, 4000)
+	async componentDidMount() {
+		await this._getAll();
+		this.setState({
+			loading: false,
+		})
 	}
 
 	render() {
