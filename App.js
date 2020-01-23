@@ -6,7 +6,6 @@ import Navigation from './src/components/navigation/Navigation';
 import * as Quotes from './src/services/Quotes';
 
 class App extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,8 +14,7 @@ class App extends Component {
 	}
 
 	async _getAll() {
-		let t = await Quotes.getAll();
-		console.log(`Done with ${t.length} result(s)`)
+		await Quotes.getAll();
 	}
 
 	async componentDidMount() {
@@ -27,7 +25,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.state.loading)
 		if (this.state.loading) {
 			return (
 				<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#ffbe76" }}>
