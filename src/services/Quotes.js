@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import { Quote } from '../models/Quote';
 
 var allQuotes = [];
@@ -11,14 +10,7 @@ async function init(value) {
 }
 
 async function getAll() {
-    let stor = null;
-    try{
-        stor = await AsyncStorage.getItem('MyQuotes');
-    }catch(e){}
-
-    console.log("Stor : ", stor);
-
-    if (allQuotes.length === 0 && stor === null) {
+    if (allQuotes.length === 0) {
         while (last >= 0) {
             await init(val).then(async (res) => {
                 val += res.count;
@@ -28,19 +20,14 @@ async function getAll() {
                 })
             })
         }
-        try{
-            AsyncStorage.setItem('MyQuotes', allQuotes);
-        }catch(e){}
     }
-    if (allQuotes.length === 0 && stor !== null){
-        allQuotes = stor;
-    }
+
     return allQuotes;
 }
 
-function getRandom(){
+function getRandom() {
     let index = allQuotes.length;
-    return allQuotes[Math.floor(Math.random()*index)];
+    return allQuotes[Math.floor(Math.random() * index)];
 }
 
 export {

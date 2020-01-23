@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-export default Quiz = () =>
-    <View>
-        <Text> Quiz page</Text>
-    </View>
+class Quiz extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        return(
+            <View>
+                <Text> Quiz page</Text>
+            </View>
+        )
+    }
+}
+
+export default Quiz;

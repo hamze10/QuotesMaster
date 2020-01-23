@@ -4,7 +4,6 @@ import { Body, Card, CardItem, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Images from '../../constants/Images';
-import * as Quotes from '../../services/Quotes';
 
 const style = StyleSheet.create({
     container: {
@@ -38,15 +37,14 @@ const style = StyleSheet.create({
     },
 })
 
-const Home = () =>
+const Home = (props) =>
     <ImageBackground source={Images.background.home2} style={style.container}>
         <View style={style.content1}>
             <Text style={{fontSize : 30, fontWeight : "bold", textShadowColor : "white"}}> Welcome to </Text>
             <Text style={{fontSize : 40, fontWeight : "bold", textShadowColor : "white"}}> Quote Master ! </Text>
-            <Text> {Quotes.getRandom()._id} </Text>
         </View>
         <View style={style.content2}>
-            <TouchableOpacity style={style.card1}>
+            <TouchableOpacity style={style.card1} onPress={ () => {props.navigation.navigate("Quiz")}}>
                 <Card style={{ alignItems: "center" }}>
                     <CardItem header bordered>
                         <Icon name="search" size={80} />
