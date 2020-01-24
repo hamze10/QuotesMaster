@@ -45,7 +45,8 @@ const Navigation = createStackNavigator({
     Quiz : {
         screen : Quiz,
         navigationOptions : {
-            headerShown : false
+            headerShown : false,
+            gestureEnabled : false
         }
     }
 },
