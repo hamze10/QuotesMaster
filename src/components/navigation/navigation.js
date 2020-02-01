@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from '../home/Home';
 import Leaderboard from '../leaderboard/Leaderboard';
 import Quiz from '../quiz/Quiz';
+import Endgame from '../endgame/Endgame';
 
 const TabNavigator = createMaterialBottomTabNavigator({
     Home : { 
@@ -47,6 +48,12 @@ const Navigation = createStackNavigator({
         navigationOptions : {
             headerShown : false,
             gestureEnabled : false
+        }
+    },
+    Endgame : {
+        screen : Endgame,
+        navigationOptions : {
+            headerShown : false
         }
     }
 },
