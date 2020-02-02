@@ -15,7 +15,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
         navigationOptions : {
             tabBarIcon : () =>
             {
-                return <Icon name="home" size={20} />
+                return <Icon name="home" size={20} style={{color:"#eb4d4b"}} />
             }
         }
     },
@@ -24,7 +24,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
         navigationOptions :{
             tabBarIcon : () => 
             {
-                return <Icon name="trophy" size={20} />
+                return <Icon name="trophy" size={20} style={{color:"#eb4d4b"}} />
             }
         }
     },

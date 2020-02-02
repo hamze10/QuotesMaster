@@ -35,6 +35,9 @@
 		272D441F4EB24EEB88BAE143 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AC04D50F1D04829AEB5C41C /* rubicon-icon-font.ttf */; };
 		97F50B3BFB384178A5DA67B9 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93375FC5EBF54AED9227A88B /* SimpleLineIcons.ttf */; };
 		68F7AAEC2AAE47EF9F3C6382 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA74F6E75FE042678439D223 /* Zocial.ttf */; };
+		C13879C6E8754A34989EACB8 /* Dark Tales.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5F0854447C6497C89DE83D4 /* Dark Tales.otf */; };
+		9213F5440FB240E8A13FF03F /* DarkTales.otf in Resources */ = {isa = PBXBuildFile; fileRef = 714DA74E6B05470089927976 /* DarkTales.otf */; };
+		E3D736429F57466ABE82D8FC /* Serenity Script.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75982D5B000E4C4ABF31D37E /* Serenity Script.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		9AC04D50F1D04829AEB5C41C /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		93375FC5EBF54AED9227A88B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FA74F6E75FE042678439D223 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5F0854447C6497C89DE83D4 /* Dark Tales.otf */ = {isa = PBXFileReference; name = "Dark Tales.otf"; path = "../src/assets/fonts/Dark Tales.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		714DA74E6B05470089927976 /* DarkTales.otf */ = {isa = PBXFileReference; name = "DarkTales.otf"; path = "../src/assets/fonts/DarkTales.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		75982D5B000E4C4ABF31D37E /* Serenity Script.otf */ = {isa = PBXFileReference; name = "Serenity Script.otf"; path = "../src/assets/fonts/Serenity Script.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,9 @@
 				9AC04D50F1D04829AEB5C41C /* rubicon-icon-font.ttf */,
 				93375FC5EBF54AED9227A88B /* SimpleLineIcons.ttf */,
 				FA74F6E75FE042678439D223 /* Zocial.ttf */,
+				D5F0854447C6497C89DE83D4 /* Dark Tales.otf */,
+				714DA74E6B05470089927976 /* DarkTales.otf */,
+				75982D5B000E4C4ABF31D37E /* Serenity Script.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -378,6 +387,9 @@
 				272D441F4EB24EEB88BAE143 /* rubicon-icon-font.ttf in Resources */,
 				97F50B3BFB384178A5DA67B9 /* SimpleLineIcons.ttf in Resources */,
 				68F7AAEC2AAE47EF9F3C6382 /* Zocial.ttf in Resources */,
+				C13879C6E8754A34989EACB8 /* Dark Tales.otf in Resources */,
+				9213F5440FB240E8A13FF03F /* DarkTales.otf in Resources */,
+				E3D736429F57466ABE82D8FC /* Serenity Script.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

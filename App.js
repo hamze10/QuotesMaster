@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import { StatusBar, View } from 'react-native';
 import { Bubbles } from 'react-native-loader';
 import Netinfo from '@react-native-community/netinfo';
-import { Button, Text } from 'native-base';
+import { Body, Button, Card, CardItem, Text, H3, H1, Root } from 'native-base';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import Navigation from './src/components/navigation/Navigation';
@@ -14,8 +14,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			loading: true,
-			contentLoaded : false,
-			internet : true,
+			contentLoaded: false,
+			internet: true,
 		};
 	}
 
@@ -25,11 +25,11 @@ class App extends Component {
 
 	async _checkInternet() {
 		await Netinfo.fetch()
-		.then(state => {
-			this.setState({
-				internet : state.isConnected
+			.then(state => {
+				this.setState({
+					internet: state.isConnected
+				})
 			})
-		})
 	}
 
 	async componentDidMount() {
@@ -38,17 +38,17 @@ class App extends Component {
 		await this._getAll();
 		this.setState({
 			loading: false,
-			contentLoaded : true,
+			contentLoaded: true,
 		})
 	}
 
-	async componentDidUpdate(){
-		const {internet, contentLoaded} = this.state;
-		if (internet && !contentLoaded){
+	async componentDidUpdate() {
+		const { internet, contentLoaded } = this.state;
+		if (internet && !contentLoaded) {
 			await this._getAll();
 			this.setState({
 				loading: false,
-				contentLoaded : true,
+				contentLoaded: true,
 			})
 		}
 	}
@@ -57,24 +57,34 @@ class App extends Component {
 		if (this.state.loading) {
 			return (
 				<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#ffbe76" }}>
-					<Bubbles size={20} color="#eb4d4b" />
-					{!this.state.internet && 
-						<View style={{marginTop:20, alignItems : "center"}}>
-							<Text style={{fontSize : 20, textAlign : "center"}}> An internet connection is required ! </Text>
-							<Button onPress={ () => { this._checkInternet() }} iconRight danger style={{width : 120, justifyContent : "center", marginTop : 10}}>
-								<Text> Reload </Text>
-								<Icon name="reload" color="white" size={20} style={{marginRight:10}} />
-							</Button>
-						</View>
+					{!!this.state.internet &&
+						<Bubbles size={20} color="#eb4d4b" />
+					}
+					{!this.state.internet &&
+						<Card style={{ width: "90%", height: "50%", justifyContent: "center" }}>
+							<CardItem header bordered style={{ justifyContent: "center" }}>
+								<Text style={{ color: "#eb4d4b", fontWeight: "bold", fontSize: 60 }}> Ooops ...</Text>
+							</CardItem>
+							<CardItem style={{ flexDirection: "column" }}>
+								<Text style={{ fontSize: 13 }}> Slow or no internet connection. </Text>
+								<Text style={{ fontSize: 13 }}> Please, check your internet settings. </Text>
+								<Button onPress={() => { this._checkInternet() }} iconRight danger style={{ justifyContent: "center", marginTop: 20 }}>
+									<Text> Reload </Text>
+									<Icon name="reload" color="white" size={20} style={{ marginRight: 10 }} />
+								</Button>
+							</CardItem>
+						</Card>
 					}
 				</View>
 			)
 		}
 		return (
-			<Fragment>
-				<StatusBar barStyle="dark-content" />
-				<Navigation />
-			</Fragment>
+			<Root>
+				<Fragment>
+					<StatusBar hidden={true} />
+					<Navigation />
+				</Fragment>
+			</Root>
 		)
 	}
 }

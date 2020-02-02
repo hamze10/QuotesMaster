@@ -42,7 +42,7 @@ const style = StyleSheet.create({
     },
     cardResp: {
         height: 100,
-        justifyContent: "center"
+        justifyContent: "center",
     }
 })
 
@@ -188,18 +188,14 @@ class Quiz extends Component {
                             <TouchableOpacity onPress={() => this._checkResp(authors[0])}>
                                 <Card style={style.cardResp}>
                                     <CardItem>
-                                        <Body>
-                                            <Text> {authors[0]} </Text>
-                                        </Body>
+                                        <Text> {authors[0]} </Text>
                                     </CardItem>
                                 </Card>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => this._checkResp(authors[1])}>
                                 <Card style={style.cardResp}>
                                     <CardItem>
-                                        <Body>
-                                            <Text> {authors[1]}  </Text>
-                                        </Body>
+                                        <Text> {authors[1]}  </Text>
                                     </CardItem>
                                 </Card>
                             </TouchableOpacity>
@@ -208,18 +204,14 @@ class Quiz extends Component {
                             <TouchableOpacity onPress={() => this._checkResp(authors[2])}>
                                 <Card style={style.cardResp}>
                                     <CardItem>
-                                        <Body>
-                                            <Text> {authors[2]}  </Text>
-                                        </Body>
+                                        <Text> {authors[2]}  </Text>
                                     </CardItem>
                                 </Card>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => this._checkResp(authors[3])}>
                                 <Card style={style.cardResp}>
                                     <CardItem>
-                                        <Body>
-                                            <Text> {authors[3]}  </Text>
-                                        </Body>
+                                        <Text> {authors[3]}  </Text>
                                     </CardItem>
                                 </Card>
                             </TouchableOpacity>
