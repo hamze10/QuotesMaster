@@ -16,7 +16,7 @@ const style = StyleSheet.create({
         alignItems: "center"
     },
     content2: {
-        flex: 1,
+        flex: 2,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "flex-end",
