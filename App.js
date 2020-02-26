@@ -34,7 +34,7 @@ class App extends Component {
 
 	async componentDidMount() {
 		await this._checkInternet();
-		if (!this.state.internet) return;
+        if (!this.state.internet) return;
 		await this._getAll();
 		this.setState({
 			loading: false,

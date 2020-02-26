@@ -8,6 +8,10 @@ const style = StyleSheet.create({
         justifyContent : "center",
         alignItems : "center"
     },
+    loose : {
+        fontSize : 30,
+        color : "red"
+    }
 })
 
 class Endgame extends Component {
@@ -36,6 +40,7 @@ class Endgame extends Component {
         let { navigation } = this.props;
         return (
             <View style={style.container}>
+                <Text style={style.loose}> YOU LOOSE ! </Text>
                 <Text> Your score : {JSON.stringify(navigation.getParam('score', '0'))}</Text>
                 <Button iconLeft onPress={ () => this._goHome()}>
                     <Icon name='home' style={{color : "white"}} />
