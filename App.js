@@ -1,114 +1,92 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component, Fragment } from 'react';
+import 'react-native-gesture-handler';
+import { StatusBar, View } from 'react-native';
+import { Bubbles } from 'react-native-loader';
+import Netinfo from '@react-native-community/netinfo';
+import { Body, Button, Card, CardItem, Text, H3, H1, Root } from 'native-base';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import Navigation from './src/components/navigation/Navigation';
+import * as Quotes from './src/services/Quotes';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			loading: true,
+			contentLoaded: false,
+			internet: true,
+		};
+	}
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+	async _getAll() {
+		await Quotes.getAll();
+	}
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+	async _checkInternet() {
+		await Netinfo.fetch()
+			.then(state => {
+				this.setState({
+					internet: state.isConnected
+				})
+			})
+	}
+
+	async componentDidMount() {
+		await this._checkInternet();
+        if (!this.state.internet) return;
+		await this._getAll();
+		this.setState({
+			loading: false,
+			contentLoaded: true,
+		})
+	}
+
+	async componentDidUpdate() {
+		const { internet, contentLoaded } = this.state;
+		if (internet && !contentLoaded) {
+			await this._getAll();
+			this.setState({
+				loading: false,
+				contentLoaded: true,
+			})
+		}
+	}
+
+	render() {
+		if (this.state.loading) {
+			return (
+				<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#ffbe76" }}>
+					{!!this.state.internet &&
+						<Bubbles size={20} color="#eb4d4b" />
+					}
+					{!this.state.internet &&
+						<Card style={{ width: "90%", height: "50%", justifyContent: "center" }}>
+							<CardItem header bordered style={{ justifyContent: "center" }}>
+								<Text style={{ color: "#eb4d4b", fontWeight: "bold", fontSize: 60 }}> Ooops ...</Text>
+							</CardItem>
+							<CardItem style={{ flexDirection: "column" }}>
+								<Text style={{ fontSize: 13 }}> Slow or no internet connection. </Text>
+								<Text style={{ fontSize: 13 }}> Please, check your internet settings. </Text>
+								<Button onPress={() => { this._checkInternet() }} iconRight danger style={{ justifyContent: "center", marginTop: 20 }}>
+									<Text> Reload </Text>
+									<Icon name="reload" color="white" size={20} style={{ marginRight: 10 }} />
+								</Button>
+							</CardItem>
+						</Card>
+					}
+				</View>
+			)
+		}
+		return (
+			<Root>
+				<Fragment>
+					<StatusBar hidden={true} />
+					<Navigation />
+				</Fragment>
+			</Root>
+		)
+	}
+}
 
 export default App;

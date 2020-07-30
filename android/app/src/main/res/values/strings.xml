@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">QuotesMaster</string>
+    <string name="ok"> OK </string>
 </resources>
